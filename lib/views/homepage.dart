@@ -12,7 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   bool _loading;
   var newslist;
 
@@ -68,6 +67,13 @@ class _HomePageState extends State<HomePage> {
 
                       /// News Article
                       Container(
+                        height: MediaQuery.of(context).size.height - 210.0,
+                        decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(35.0),
+                              topRight: Radius.circular(35.0)),
+                        ),
                         margin: EdgeInsets.only(top: 16),
                         child: ListView.builder(
                             itemCount: newslist.length,
@@ -100,12 +106,13 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-          builder: (context) => CategoryNews(
-            newsCategory: categoryName.toLowerCase(),
-          )
-        ));
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => CategoryNews(
+                      newsCategory: categoryName.toLowerCase(),
+                    )));
       },
       child: Container(
         margin: EdgeInsets.only(right: 14),
@@ -126,8 +133,7 @@ class CategoryCard extends StatelessWidget {
               width: 120,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                color: Colors.black26
-              ),
+                  color: Colors.black26),
               child: Text(
                 categoryName,
                 textAlign: TextAlign.center,
